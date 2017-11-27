@@ -19,7 +19,7 @@
   },
   "validations": [],
   "relations": {
-    "Solicitud": {
+    "solicitudes": {
       "type": "hasAndBelongsToMany",
       "model": "ListaFamiliar",
       "foreignKey": "usuarioId"
