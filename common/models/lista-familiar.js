@@ -43,15 +43,17 @@ module.exports = function (ListaFamiliar) {
                 callback(err);
             lista.solicitudes.add(pepe,
                     function (err, vuelta) {
-                        salida=vuelta;
+                        salida = vuelta;
                         callback(null, salida);
                     });
         });
 
 
-        
-        
+
+
     };
+
+
 
 };
 
