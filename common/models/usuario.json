@@ -48,22 +48,28 @@
       "principalId": "$authenticated",
       "permission": "ALLOW",
       "property": "aceptarSolicitud"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "rechazarSolicitud"
     }
   ],
   "methods": {
     "prototype.aceptarSolicitud": {
       "accepts": [
-                {
-                    "arg": "context",
-                    "type":"object",
-                    "required":"true",
-                    "description":"contexto",
-                    "http":{
-                        "source":"context"
-                    }
-                }
-                
-            ],
+        {
+          "arg": "context",
+          "type": "object",
+          "required": "true",
+          "description": "contexto",
+          "http": {
+            "source": "context"
+          }
+        }
+      ],
       "returns": [
         {
           "arg": "miembrosLista",
@@ -77,6 +83,34 @@
         {
           "path": "/aceptarSolicitud",
           "verb": "put"
+        }
+      ]
+    },
+    "prototype.rechazarSolicitud": {
+      "accepts": [
+        {
+          "arg": "context",
+          "type": "object",
+          "required": true,
+          "description": "contexto",
+          "http": {
+            "source": "context"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "miembrosLista",
+          "type": "array",
+          "root": false,
+          "description": "Esta acción debe devolver un array con todos los miembros de la lista."
+        }
+      ],
+      "description": "Enviamos un identificador de usuario y, si ese usuario tiene alguna solicitud en la lista de la que es miembro el actualmente autenticado, esta solicitud será rechazada.",
+      "http": [
+        {
+          "path": "/rechazarSolicitud",
+          "verb": "delete"
         }
       ]
     }

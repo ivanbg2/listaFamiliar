@@ -32,7 +32,48 @@
       "principalType": "ROLE",
       "principalId": "$everyone",
       "permission": "DENY"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "Productos"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "limpiarLista"
     }
   ],
-  "methods": {}
+  "methods": {
+    "limpiarLista": {
+      "accepts": [
+        {
+          "arg": "context",
+          "type": "object",
+          "http": {
+            "source": "context"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "miembrosLista",
+          "type": "array",
+          "root": false,
+          "description": "Esta acción debe devolver un array con todos los productos de la lista del usuario autenticado."
+        }
+      ],
+      "description": "Crear un método que ponga el atributo comprar de todos los productos de una lista a false.",
+      "http": [
+        {
+          "path": "/limpiarLista",
+          "verb": "put"
+        }
+      ]
+    }
+  }
 }
